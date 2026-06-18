@@ -1,10 +1,29 @@
+import time
 import subprocess
+import os
 
-with open("error.log", "w") as log:
-    subprocess.run(
-        ["python", "calculator.py"],
-        stderr=log,
-        text=True
-    )
+LOG_FILE = "error.log"
 
-print("Execution completed. Check error.log")
+def check_error():
+    if not os.path.exists(LOG_FILE):
+        return False
+
+    with open(LOG_FILE, "r") as f:
+        content = f.read().lower()
+
+    return "zero" in content or "error" in content
+
+def auto_fix():
+    print("Error detected! Triggering fix process...")
+
+    # Simulated AI fix step
+    subprocess.run(["python", "mcp_server.py"])
+
+while True:
+    print("Monitoring logs...")
+
+    if check_error():
+        auto_fix()
+        break
+
+    time.sleep(3)
