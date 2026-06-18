@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\Kashish\OneDrive\Desktop\MCP_Task\calculator.py", line 4, in <module>
+    print(divide(10, 0))
+          ~~~~~~^^^^^^^
+  File "C:\Users\Kashish\OneDrive\Desktop\MCP_Task\calculator.py", line 2, in divide
+    return a / b
+           ~~^~~
+ZeroDivisionError: division by zero
